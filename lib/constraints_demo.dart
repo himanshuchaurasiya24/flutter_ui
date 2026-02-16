@@ -13,9 +13,7 @@ class _ConstraintsDemoState extends State<ConstraintsDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Constraints Demo'),
-      ),
+      appBar: AppBar(title: const Text('Constraints Demo')),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -56,7 +54,10 @@ class _ConstraintsDemoState extends State<ConstraintsDemo> {
                   children: [
                     const Text(
                       'ERROR SCENARIO:\nListView inside Column inside SingleChildScrollView',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     // This will cause the "Vertical viewport was given unbounded height" error
@@ -80,7 +81,10 @@ class _ConstraintsDemoState extends State<ConstraintsDemo> {
                   children: [
                     const Text(
                       'FIXED SCENARIO:\nUsing SizedBox or shrinkWrap',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 10),
@@ -88,6 +92,8 @@ class _ConstraintsDemoState extends State<ConstraintsDemo> {
                     SizedBox(
                       height: 150, // Give it a fixed height constraint
                       child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: 5,
                         itemBuilder: (context, index) => ListTile(
                           title: Text('Expected Item $index'),
